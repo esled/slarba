@@ -9,13 +9,13 @@ kissat= Array('i', range(10))
 def ProcessSelectFunction(process):
 	if process == 0:
 		gps()
-	else if process == 1:
+	elif process == 1:
 		rtc()
-	else if process == 2:
+	elif process == 2:
 		can()
-	else if process == 3:
+	elif process == 3:
                 i2c()
-        else if process == 4:
+        elif process == 4:
                 display()
 	else:
 		print process
