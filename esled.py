@@ -4,42 +4,40 @@ from subprocess import call
 
 NUM_PROCESSES = 7
 
+GPS_Data = Value('d',0.0)
+RTC_Data = Value('s',"kissa")
+CAN_Data = Value('s',"Koira")
+I2C_Data = Value('d',1.0)
+
 kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
 
 def ProcessSelectFunction(process):
 	if process == 0:
-		time.sleep(0.06)
 		gps()
 	elif process == 1:
-		time.sleep(0.05)
 		rtc()
 	elif process == 2:
-		time.sleep(0.04)
 		can()
 	elif process == 3:
-		time.sleep(0.03)
-                i2c()
-        elif process == 4:
-		time.sleep(0.02)
-                display()
+		i2c()
+	elif process == 4:
+		display()
 	elif process == 5:
-		time.sleep(0.01)
 		anturit()
 	elif process == 6:
 		DHT()
+		
 def gps():
-	print "gps paalla\n"
+	GPS_Data.Value = 1.0
 def rtc():
-	print "RTC paalla"
-	print "Kello on %s\n" % time.time()
-
+	RTC_Data.Value = time.time()
 def can():
-	print "CAN bus paalla\n"
+	CAN_Data.Value = "Kissa"
 def i2c():
-	print "I2C paalla\n"
+	I2C.Data.Value = 0
 def display():
-        print "Display prosessi paalla\n"
+	
 def anturit():
 	contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
 	contents2 = contents[-1].split("=")
@@ -62,7 +60,12 @@ while 1:
 	time.sleep(1)
 	os.system('clear')
 	children = []
-
+	
+	print "GPS koordinaatti : %d" % GPS_Data.Value
+	print "RTC aika: %s" % RTC_Data.Value
+	print "CAN tila: %s" % CAN_Data.Value
+	print "I2C tila: %d" % I2C_Data.Value
+	
 	start_time = time.time()
 	for process in range(NUM_PROCESSES):
 		pid = os.fork()
