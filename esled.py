@@ -3,7 +3,6 @@ from multiprocessing import Value, Array
 from subprocess import call
 
 NUM_PROCESSES = 7
-
 GPS_Data = Value('d',0.0)
 RTC_Data = Array('c',"kissa                          ")
 CAN_Data = Array('c',"Koira")
@@ -72,10 +71,10 @@ while 1:
 	print " "
         print "Dallas 1-wire anturit:"
         print "Temp sensor 1. s/n 28-00000696b200"
-        print "Arvo : {0:0.1f}*C\n".format(D1W_1.value)
+        print u"Arvo : {0:0.1f}\u00b0C\n".format(D1W_1.value)
 	print " "
 	print "DHT anturi 1"
-	print 'Temp={0:0.1f}*C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
+	print u'Temp={0:0.1f}\u00b0C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
 
 
 	start_time = time.time()
@@ -87,10 +86,10 @@ while 1:
 			ProcessSelectFunction(process)
 			os._exit(0)
 
-	for i, child in enumerate(children):
-		os.waitpid(child, 0)
-	while (time.time() - start_time) < 1:
+	#for i, child in enumerate(children):
+	#	os.waitpid(child, 0)
+	while (time.time() - start_time) < 0.5:
 		kissa.value = 3.5
 	os.system('clear')
-	print time.time() - start_time
+	print "fps: %i" % (60/(time.time() - start_time))
 	print "\n\n\n"
