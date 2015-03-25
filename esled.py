@@ -29,15 +29,15 @@ def ProcessSelectFunction(process):
 		DHT()
 		
 def gps():
-	GPS_Data.Value = 1.0
+	GPS_Data.value = 1.0
 def rtc():
-	RTC_Data.Value = time.time()
+	RTC_Data.value = time.time()
 def can():
-	CAN_Data.Value = "Kissa"
+	CAN_Data.value = "Kissa"
 def i2c():
-	I2C.Data.Value = 0
+	I2C.Data.value = 0
 def display():
-	kissa.Value = 2.1
+	kissa.value = 2.1
 def anturit():
 	contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
 	contents2 = contents[-1].split("=")
@@ -61,10 +61,10 @@ while 1:
 	os.system('clear')
 	children = []
 	
-	print "GPS koordinaatti : %d" % GPS_Data.Value
-	print "RTC aika: %s" % RTC_Data.Value
-	print "CAN tila: %s" % CAN_Data.Value
-	print "I2C tila: %d" % I2C_Data.Value
+	print "GPS koordinaatti : %d" % GPS_Data.value
+	print "RTC aika: %s" % RTC_Data.value
+	print "CAN tila: %s" % CAN_Data.value
+	print "I2C tila: %d" % I2C_Data.value
 	
 	start_time = time.time()
 	for process in range(NUM_PROCESSES):
