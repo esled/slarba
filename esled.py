@@ -5,8 +5,8 @@ from subprocess import call
 NUM_PROCESSES = 7
 
 GPS_Data = Value('d',0.0)
-RTC_Data = Value('s',"kissa")
-CAN_Data = Value('s',"Koira")
+RTC_Data = Array('c',"kissa")
+CAN_Data = Array('c',"Koira")
 I2C_Data = Value('d',1.0)
 
 kissa = Value('d', 1.0)
