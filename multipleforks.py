@@ -10,18 +10,31 @@ def ProcessSelectFunction(process):
 	if process == 0:
 		gps()
 	if process == 1:
-		print "rosessi %s" % process
+		rtc()
+	if process == 2:
+		can()
+	if process == 3:
+                i2c()
+        if process == 4:
+                display()
 	else:
 		print process
 		x = 1
-		print kissa.value
+	
 		for n in xrange(10000000):
 			x += 1
 		kissa.value = time.time() - start_time
 		print kissa.value
 def gps():
 	print "gps paalla"
-	print kissat[:]
+def rtc():
+	print "rtc paalla"
+def can():
+	print "CAN bus paalla"
+def i2c():
+	print "I2C paalla"
+def display():
+        print "Display prosessi paalla"
 children = []
 
 start_time = time.time()
