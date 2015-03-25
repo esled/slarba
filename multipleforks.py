@@ -29,6 +29,7 @@ def gps():
 	print "gps paalla"
 def rtc():
 	print "rtc paalla"
+	print time.time()
 def can():
 	print "CAN bus paalla"
 def i2c():
