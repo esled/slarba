@@ -5,9 +5,14 @@ from subprocess import call
 NUM_PROCESSES = 7
 
 GPS_Data = Value('d',0.0)
-RTC_Data = Array('c',"kissa")
+RTC_Data = Array('c',"kissa                          ")
 CAN_Data = Array('c',"Koira")
 I2C_Data = Value('d',1.0)
+D1W_1 = Value('d',0.0)
+DHT_1_T = Value('d',0.0)
+DHT_1_H = Value('d',0.0)
+DHT_1_W = Value('i',5)
+
 
 kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
@@ -31,41 +36,48 @@ def ProcessSelectFunction(process):
 def gps():
 	GPS_Data.value = 1.0
 def rtc():
-	RTC_Data.value = time.time()
+	RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
 def can():
 	CAN_Data.value = "Kissa"
 def i2c():
-	I2C.Data.value = 0
+	I2C_Data.value = 0
 def display():
 	kissa.value = 2.1
 def anturit():
 	contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
 	contents2 = contents[-1].split("=")
 	contents3 = int(contents2[-1])
-	print "Dallas 1-wire anturit:"
-	print "Temp sensor 1. s/n 28-00000696b200"
-	print "Arvo : {0:0.1f}*C\n".format(contents3/1000.)
-	
-def DHT():
-	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, "17")
-	if humidity is not None and temperature is not None:
-		print "DHT anturi 1"
-		print 'Temp={0:0.1f}*C\nHumidity={1:0.1f}%\n'.format(temperature, humidity)
-	else:
-		print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
+	D1W_1.value = contents3/1000.
 
+def DHT():
+	if DHT_1_W.value > 4:
+		DHT_1_W.value = 0
+		humidity, temperature = Adafruit_DHT.read(Adafruit_DHT.DHT22, "17")
+		if humidity is not None and temperature is not None:
+			DHT_1_T.value = temperature
+			DHT_1_H.value = humidity
+		else:
+			print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
+	else:
+		DHT_1_W.value = DHT_1_W.value + 1
 
 
 while 1:	
-	time.sleep(1)
-	os.system('clear')
 	children = []
 	
 	print "GPS koordinaatti : %d" % GPS_Data.value
 	print "RTC aika: %s" % RTC_Data.value
 	print "CAN tila: %s" % CAN_Data.value
 	print "I2C tila: %d" % I2C_Data.value
-	
+	print " "
+        print "Dallas 1-wire anturit:"
+        print "Temp sensor 1. s/n 28-00000696b200"
+        print "Arvo : {0:0.1f}*C\n".format(D1W_1.value)
+	print " "
+	print "DHT anturi 1"
+	print 'Temp={0:0.1f}*C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
+
+
 	start_time = time.time()
 	for process in range(NUM_PROCESSES):
 		pid = os.fork()
@@ -77,6 +89,8 @@ while 1:
 
 	for i, child in enumerate(children):
 		os.waitpid(child, 0)
-
+	while (time.time() - start_time) < 1:
+		kissa.value = 3.5
+	os.system('clear')
 	print time.time() - start_time
-
+	print "\n\n\n"
