@@ -31,13 +31,9 @@ def ProcessSelectFunction(process):
 def gps():
 	print "gps paalla\n"
 def rtc():
-<<<<<<< HEAD
-	print "RTC paalla\n"
+	print "RTC paalla"
 	print "Kello on %s\n" % time.time()
-=======
-	print "rtc paalla"
-	print time.time()
->>>>>>> b751cf76568bb40748fb0c602247d1ada0bf6be3
+
 def can():
 	print "CAN bus paalla\n"
 def i2c():
