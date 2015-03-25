@@ -37,7 +37,7 @@ def can():
 def i2c():
 	I2C.Data.Value = 0
 def display():
-	
+	kissa.Value = 2.1
 def anturit():
 	contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
 	contents2 = contents[-1].split("=")
