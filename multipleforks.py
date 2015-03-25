@@ -21,7 +21,7 @@ def ProcessSelectFunction(process):
 		print process
 		x = 1
 	
-		for n in xrange(10000000):
+		for n in xrange(100000):
 			x += 1
 		kissa.value = time.time() - start_time
 		print kissa.value
