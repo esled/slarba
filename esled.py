@@ -91,5 +91,5 @@ while 1:
 	while (time.time() - start_time) < 0.5:
 		kissa.value = 3.5
 	os.system('clear')
-	print "fps: %i" % (1/(time.time() - start_time))
+	print "fpm: %d" % (60/(time.time() - start_time))
 	print "\n\n\n"
