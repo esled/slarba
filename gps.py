@@ -7,8 +7,8 @@ last_data = open('gps_data', 'w')
 while 1:
 	data = gps.gpgga
 	gps_data = str(data['utc']) + ";" + str(data['longitude']) + ";" + str(data['latitude']) + ";\n"
-	file.write(last_data)
-	file.write(database)
+	database.write(gps_data)
+	last_data.write(gps_data)
 	time.sleep(0.49)
 	
 
