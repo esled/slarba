@@ -9,7 +9,7 @@ with sht21.SHT21(1) as sht21:
 NUM_PROCESSES = 6 #JOS DHT22 -> 7
 GPS_Data = Value('d',0.0)
 RTC_Data = Array('c',"kissa                          ")
-CAN_Data = Array('c',"Koira")
+CAN_Data = Array('c',"Koira") #CAN väylä toimii
 I2C_Data = Value('d',1.0)
 D1W_1 = Value('d',0.0)
 DHT_1_T = Value('d',0.0)
