@@ -47,7 +47,7 @@ def ProcessSelectFunction(process):
 def gps():
 	#GPS_Data.value = 1.0
 	GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
-	GPS_Data.split(";").
+	GPS_Data.split(";")
 	Longitude.value = GPS_Data[2]
 	Latitude.value = GPS_Data[1]
 	
