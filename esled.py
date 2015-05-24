@@ -85,6 +85,7 @@ def gps():
 		while flag.value == clk:
 			pass
 		clk = flag.value
+		print "hop"
 		
 def rtc():
 	clk = 0
@@ -93,6 +94,7 @@ def rtc():
 		while flag.value == clk:
 			pass
 		clk = flag.value
+		print "hop"
 		
 def can():
 	clk = 0
@@ -101,6 +103,7 @@ def can():
 		while flag.value == clk:
 			pass
 		clk = flag.value
+		print "hop"
 		
 def i2c():
 	clk = 0
@@ -109,7 +112,8 @@ def i2c():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-				
+		print "hop"
+		
 def display():
 	clk = 0
 	while child_flag.value:
@@ -117,6 +121,7 @@ def display():
 		while flag.value == clk:
 			pass
 		clk = flag.value
+		print "hop"
 		
 def anturit():
 	clk = 0
@@ -132,6 +137,7 @@ def anturit():
 		while flag.value == clk:
 			pass
 		clk = flag.value
+		print "hop"
 		
 def DHT():
 	clk = 0
@@ -150,7 +156,8 @@ def DHT():
 		while flag.value == clk:
 			pass
 		clk = flag.value		
-
+		print "hop"
+		
 while 1:	
 	children = []
 	child_flag.value = 1
