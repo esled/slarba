@@ -72,7 +72,9 @@ def screen():
 			pass			
 		clk = flag.value
 	print "ERROR"
+	
 def gps():
+	clk = 0
 	while child_flag.value:
 		#GPS_Data.value = 1.0
 		GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
@@ -80,31 +82,44 @@ def gps():
 		#print GPS_Data
 		Longitude.value = float(GPS_Data[2])
 		Latitude.value = float(GPS_Data[1])
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
+		clk = flag.value
 		
 def rtc():
+	clk = 0
 	while child_flag.value:
 		RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
+		while flag.value == clk:
+			pass
+		clk = flag.value
+		
 def can():
+	clk = 0
 	while child_flag.value:
 		CAN_Data.value = "On"
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
-			
+		clk = flag.value
+		
 def i2c():
+	clk = 0
 	while child_flag.value:
 		I2C_Data.value = 0
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
+		clk = flag.value
 				
 def display():
+	clk = 0
 	while child_flag.value:
 		kissa.value = 2.1
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
+		clk = flag.value
 		
 def anturit():
+	clk = 0
 	while child_flag.value:
 		#contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
 		#contents2 = contents[-1].split("=")
@@ -114,10 +129,12 @@ def anturit():
 		#SHT21_H.value = sht21.read_humidity()
 		SHT21_T.value = SHT21_T.value + 1
 		#print SHT21_T.value
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
+		clk = flag.value
 		
 def DHT():
+	clk = 0
 	while child_flag.value:
 	#	if DHT_1_W.value > 4:
 	#		DHT_1_W.value = 0
@@ -130,9 +147,9 @@ def DHT():
 	#	else:
 	#		DHT_1_W.value = DHT_1_W.value + 1
 		print 'Ei DTH-anturia'
-		while (flag.value == 0):
+		while flag.value == clk:
 			pass
-		
+		clk = flag.value		
 
 while 1:	
 	children = []
