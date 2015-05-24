@@ -176,7 +176,7 @@ while 1:
 		print "fpm: %d" % (60/(time.time() - start_time))
 		#print "\n\n\n"
 		start_time = time.time()
-		while (time.time() - start_time) < 0.5:
+		while (time.time() - start_time) < 0.01:
 			pass
 		if flag.value == 0:
 			flag.value = 1
