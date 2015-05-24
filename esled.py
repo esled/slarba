@@ -55,8 +55,6 @@ def rtc():
 	RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
 def can():
 	CAN_Data.value = "On"
-	while 1:
-		
 	
 def i2c():
 	I2C_Data.value = 0
