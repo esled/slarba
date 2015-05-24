@@ -6,7 +6,7 @@ from subprocess import call
 #	print "T: %s"%sht21.read_temperature()
 #	print "H: %s"%sht21.read_humidity()
 
-NUM_PROCESSES = 6 #JOS DHT22 -> 7
+NUM_PROCESSES = 7 #JOS DHT22 -> 8
 
 #GPS muuttujat
 #GPS_Data = Value('d',0.0)
@@ -29,20 +29,42 @@ kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
 
 def ProcessSelectFunction(process):
-	if process == 0:
-		gps()
+	elif process == 0:
+		screen()
 	elif process == 1:
-		rtc()
+		gps()
 	elif process == 2:
-		can()
+		rtc()
 	elif process == 3:
-		i2c()
+		can()
 	elif process == 4:
-		display()
+		i2c()
 	elif process == 5:
-		anturit()
+		display()
 	elif process == 6:
+		anturit()
+	elif process == 7:
 		DHT()
+		
+def screen():
+	while 1:
+		os.system('clear')
+		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
+		print "RTC aika: %s" % RTC_Data.value
+		print "CAN tila: %s" % CAN_Data.value
+		print "I2C tila: %d" % I2C_Data.value
+		print " "
+		print "Dallas 1-wire anturit:"
+		print "Temp sensor 1. s/n 28-00000696b200"
+		print u"Arvo : {0:0.1f}\u00b0C\n".format(D1W_1.value)
+		print " "
+		print "DHT anturi 1"
+		print u'Temp={0:0.1f}\u00b0C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
+
+		print "SHT Anturi"
+		print u'Temp: {0:0.1f}\u00b0C'.format(SHT21_T.value)
+		print "Hum : {0:0.1f}%".format(SHT21_H.value)
+		while flag.value = 0
 		
 def gps():
 	#GPS_Data.value = 1.0
@@ -85,24 +107,6 @@ def DHT():
 
 while 1:	
 	children = []
-	
-	print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
-	print "RTC aika: %s" % RTC_Data.value
-	print "CAN tila: %s" % CAN_Data.value
-	print "I2C tila: %d" % I2C_Data.value
-	print " "
-        print "Dallas 1-wire anturit:"
-        print "Temp sensor 1. s/n 28-00000696b200"
-        print u"Arvo : {0:0.1f}\u00b0C\n".format(D1W_1.value)
-	print " "
-	print "DHT anturi 1"
-	print u'Temp={0:0.1f}\u00b0C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
-
-	print "SHT Anturi"
-	print u'Temp: {0:0.1f}\u00b0C'.format(SHT21_T.value)
-	print "Hum : {0:0.1f}%".format(SHT21_H.value)
-
-	start_time = time.time()
 	for process in range(NUM_PROCESSES):
 		pid = os.fork()
 		if pid:
@@ -113,8 +117,11 @@ while 1:
 
 	#for i, child in enumerate(children):
 	#	os.waitpid(child, 0)
-	while (time.time() - start_time) < 1:
-		kissa.value = 3.5
-	os.system('clear')
-	print "fpm: %d" % (60/(time.time() - start_time))
-	print "\n\n\n"
+	while 1:
+		start_time = time.time()
+		while (time.time() - start_time) < 1:
+			kissa.value = 3.5
+		flag.value = 0
+		flag.value = 1
+		print "fpm: %d" % (60/(time.time() - start_time))
+		print "\n\n\n"
