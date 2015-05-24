@@ -50,7 +50,8 @@ def ProcessSelectFunction(process):
 		DHT()
 		
 def screen():
-	while child_flag.value:
+	clk = 0
+	while child_flag.value == 1:
 		os.system('clear')
 		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
 		print "RTC aika: %s" % RTC_Data.value
@@ -67,15 +68,16 @@ def screen():
 		print "SHT Anturi"
 		print u'Temp: {0:0.1f}\u00b0C'.format(SHT21_T.value)
 		print "Hum : {0:0.1f}%".format(SHT21_H.value)
-		while (flag.value == 0):
-			pass
-		
+		while flag.value == clk:
+			pass			
+		clk = flag.value
+	print "ERROR"
 def gps():
 	while child_flag.value:
 		#GPS_Data.value = 1.0
 		GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
 		GPS_Data = GPS_Data.split(";")
-		print GPS_Data
+		#print GPS_Data
 		Longitude.value = float(GPS_Data[2])
 		Latitude.value = float(GPS_Data[1])
 		while (flag.value == 0):
@@ -110,7 +112,8 @@ def anturit():
 		#D1W_1.value = contents3/1000.
 		#SHT21_T.value = sht21.read_temperature()
 		#SHT21_H.value = sht21.read_humidity()
-		print 'aaa'
+		SHT21_T.value = SHT21_T.value + 1
+		#print SHT21_T.value
 		while (flag.value == 0):
 			pass
 		
@@ -123,9 +126,10 @@ def DHT():
 	#			DHT_1_T.value = temperature
 	#			DHT_1_H.value = humidity
 	#		else:
-				print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
+	#			print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
 	#	else:
 	#		DHT_1_W.value = DHT_1_W.value + 1
+		print 'Ei DTH-anturia'
 		while (flag.value == 0):
 			pass
 		
@@ -143,15 +147,16 @@ while 1:
 
 	#for i, child in enumerate(children):
 	#	os.waitpid(child, 0)
+	start_time = time.time()
 	while 1:
-		start_time = time.time()
-		while (time.time() - start_time) < 1:
-			kissa.value = 3.5
-		flag.value = 0
-		flag.value = 1
 		print "fpm: %d" % (60/(time.time() - start_time))
-		print "\n\n\n"
+		#print "\n\n\n"
+		start_time = time.time()
+		while (time.time() - start_time) < 0.5:
+			pass
+		if flag.value == 0:
+			flag.value = 1
+		else:
+			flag.value = 0
 	child_flag.value = 0
 	start_time = time.time()
-	while (time.time() - start_time) < 1:
-		pass
