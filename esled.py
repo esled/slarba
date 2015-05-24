@@ -28,6 +28,8 @@ CAN_Data = Array('c',"Off")
 kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
 
+flag = Value('i', 0)
+
 def ProcessSelectFunction(process):
 	if process == 0:
 		screen()
@@ -64,7 +66,8 @@ def screen():
 		print "SHT Anturi"
 		print u'Temp: {0:0.1f}\u00b0C'.format(SHT21_T.value)
 		print "Hum : {0:0.1f}%".format(SHT21_H.value)
-		while flag.value = 0
+		while (flag.value == 0):
+			pass
 		
 def gps():
 	#GPS_Data.value = 1.0
