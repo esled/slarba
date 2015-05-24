@@ -29,6 +29,7 @@ kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
 
 flag = Value('i', 0)
+child_flag = Value('i',0)
 
 def ProcessSelectFunction(process):
 	if process == 0:
@@ -49,7 +50,7 @@ def ProcessSelectFunction(process):
 		DHT()
 		
 def screen():
-	while 1:
+	while child_flag.value:
 		os.system('clear')
 		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
 		print "RTC aika: %s" % RTC_Data.value
@@ -70,46 +71,68 @@ def screen():
 			pass
 		
 def gps():
-	#GPS_Data.value = 1.0
-	GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
-	GPS_Data = GPS_Data.split(";")
-	print GPS_Data
-	Longitude.value = float(GPS_Data[2])
-	Latitude.value = float(GPS_Data[1])
-	
+	while child_flag.value:
+		#GPS_Data.value = 1.0
+		GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
+		GPS_Data = GPS_Data.split(";")
+		print GPS_Data
+		Longitude.value = float(GPS_Data[2])
+		Latitude.value = float(GPS_Data[1])
+		while (flag.value == 0):
+			pass
+		
 def rtc():
-	RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
+	while child_flag.value:
+		RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
 def can():
-	CAN_Data.value = "On"
-	
+	while child_flag.value:
+		CAN_Data.value = "On"
+		while (flag.value == 0):
+			pass
+			
 def i2c():
-	I2C_Data.value = 0
+	while child_flag.value:
+		I2C_Data.value = 0
+		while (flag.value == 0):
+			pass
+				
 def display():
-	kissa.value = 2.1
+	while child_flag.value:
+		kissa.value = 2.1
+		while (flag.value == 0):
+			pass
+		
 def anturit():
-	#contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
-	#contents2 = contents[-1].split("=")
-	#contents3 = int(contents2[-1])
-	#D1W_1.value = contents3/1000.
-	#SHT21_T.value = sht21.read_temperature()
-	#SHT21_H.value = sht21.read_humidity()
-	print 'aaa'
-
+	while child_flag.value:
+		#contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
+		#contents2 = contents[-1].split("=")
+		#contents3 = int(contents2[-1])
+		#D1W_1.value = contents3/1000.
+		#SHT21_T.value = sht21.read_temperature()
+		#SHT21_H.value = sht21.read_humidity()
+		print 'aaa'
+		while (flag.value == 0):
+			pass
+		
 def DHT():
-#	if DHT_1_W.value > 4:
-#		DHT_1_W.value = 0
-#		humidity, temperature = Adafruit_DHT.read(Adafruit_DHT.DHT22, "17")
-#		if humidity is not None and temperature is not None:
-#			DHT_1_T.value = temperature
-#			DHT_1_H.value = humidity
-#		else:
-			print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
-#	else:
-#		DHT_1_W.value = DHT_1_W.value + 1
-
+	while child_flag.value:
+	#	if DHT_1_W.value > 4:
+	#		DHT_1_W.value = 0
+	#		humidity, temperature = Adafruit_DHT.read(Adafruit_DHT.DHT22, "17")
+	#		if humidity is not None and temperature is not None:
+	#			DHT_1_T.value = temperature
+	#			DHT_1_H.value = humidity
+	#		else:
+				print 'Arvojen lukeminen anturilta DHT22 portissa GPIO17 epaonnistui!\n'
+	#	else:
+	#		DHT_1_W.value = DHT_1_W.value + 1
+		while (flag.value == 0):
+			pass
+		
 
 while 1:	
 	children = []
+	child_flag.value = 1
 	for process in range(NUM_PROCESSES):
 		pid = os.fork()
 		if pid:
@@ -128,3 +151,7 @@ while 1:
 		flag.value = 1
 		print "fpm: %d" % (60/(time.time() - start_time))
 		print "\n\n\n"
+	child_flag.value = 0
+	start_time = time.time()
+	while (time.time() - start_time) < 1:
+		pass
