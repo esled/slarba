@@ -1,10 +1,10 @@
-import os, time, sys, sht21#, Adafruit_DHT
+import os, time, sys#, sht21#, Adafruit_DHT
 from multiprocessing import Value, Array
 from subprocess import call
 
-with sht21.SHT21(1) as sht21:
-	print "T: %s"%sht21.read_temperature()
-	print "H: %s"%sht21.read_humidity()
+#with sht21.SHT21(1) as sht21:
+#	print "T: %s"%sht21.read_temperature()
+#	print "H: %s"%sht21.read_humidity()
 
 NUM_PROCESSES = 6 #JOS DHT22 -> 7
 
@@ -61,12 +61,12 @@ def i2c():
 def display():
 	kissa.value = 2.1
 def anturit():
-	contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
-	contents2 = contents[-1].split("=")
-	contents3 = int(contents2[-1])
-	D1W_1.value = contents3/1000.
-	SHT21_T.value = sht21.read_temperature()
-	SHT21_H.value = sht21.read_humidity()
+	#contents = open("/sys/bus/w1/devices/28-00000696b200/w1_slave", "r").read().split()
+	#contents2 = contents[-1].split("=")
+	#contents3 = int(contents2[-1])
+	#D1W_1.value = contents3/1000.
+	#SHT21_T.value = sht21.read_temperature()
+	#SHT21_H.value = sht21.read_humidity()
 
 def DHT():
 #	if DHT_1_W.value > 4:
