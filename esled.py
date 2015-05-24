@@ -29,7 +29,7 @@ kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
 
 def ProcessSelectFunction(process):
-	elif process == 0:
+	if process == 0:
 		screen()
 	elif process == 1:
 		gps()
