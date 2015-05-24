@@ -47,9 +47,10 @@ def ProcessSelectFunction(process):
 def gps():
 	#GPS_Data.value = 1.0
 	GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
-	GPS_Data.split(";")
-	Longitude.value = GPS_Data[2]
-	Latitude.value = GPS_Data[1]
+	GPS_Data = GPS_Data.split(";")
+	print GPS_Data
+	Longitude.value = float(GPS_Data[2])
+	Latitude.value = float(GPS_Data[1])
 	
 def rtc():
 	RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
@@ -67,6 +68,7 @@ def anturit():
 	#D1W_1.value = contents3/1000.
 	#SHT21_T.value = sht21.read_temperature()
 	#SHT21_H.value = sht21.read_humidity()
+	print 'aaa'
 
 def DHT():
 #	if DHT_1_W.value > 4:
@@ -84,9 +86,9 @@ def DHT():
 while 1:	
 	children = []
 	
-	print "GPS koordinaatti : %d" % GPS_Data.value
+	print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
 	print "RTC aika: %s" % RTC_Data.value
-	print "CAN tila: %s" % Longitude.value #CAN_Data.value
+	print "CAN tila: %s" % CAN_Data.value
 	print "I2C tila: %d" % I2C_Data.value
 	print " "
         print "Dallas 1-wire anturit:"
