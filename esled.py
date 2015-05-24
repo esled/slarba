@@ -7,9 +7,14 @@ with sht21.SHT21(1) as sht21:
 	print "H: %s"%sht21.read_humidity()
 
 NUM_PROCESSES = 6 #JOS DHT22 -> 7
-GPS_Data = Value('d',0.0)
+
+#GPS muuttujat
+#GPS_Data = Value('d',0.0)
+Longitude = Value('d',0.0)
+Latitude = Value('d',0.0)
+
+
 RTC_Data = Array('c',"kissa                          ")
-CAN_Data = Array('c',"Koira")
 I2C_Data = Value('d',1.0)
 D1W_1 = Value('d',0.0)
 DHT_1_T = Value('d',0.0)
@@ -17,6 +22,8 @@ DHT_1_H = Value('d',0.0)
 DHT_1_W = Value('i',5)
 SHT21_T = Value('d',0.0)
 SHT21_H = Value('d',0.0)
+
+CAN_Data = Array('c',"Off")
 
 kissa = Value('d', 1.0)
 kissat= Array('i', range(10))
@@ -38,11 +45,19 @@ def ProcessSelectFunction(process):
 		DHT()
 		
 def gps():
-	GPS_Data.value = 1.0
+	#GPS_Data.value = 1.0
+	GPS_Data = "74234.0;25.721899999999998;66.48173666666666"
+	GPS_Data.split(";").
+	Longitude.value = GPS_Data[2]
+	Latitude.value = GPS_Data[1]
+	
 def rtc():
 	RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
 def can():
-	CAN_Data.value = "Kissa"
+	CAN_Data.value = "On"
+	while 1:
+		
+	
 def i2c():
 	I2C_Data.value = 0
 def display():
@@ -73,7 +88,7 @@ while 1:
 	
 	print "GPS koordinaatti : %d" % GPS_Data.value
 	print "RTC aika: %s" % RTC_Data.value
-	print "CAN tila: %s" % CAN_Data.value
+	print "CAN tila: %s" % Longitude.value #CAN_Data.value
 	print "I2C tila: %d" % I2C_Data.value
 	print " "
         print "Dallas 1-wire anturit:"
@@ -98,7 +113,7 @@ while 1:
 
 	#for i, child in enumerate(children):
 	#	os.waitpid(child, 0)
-	while (time.time() - start_time) < 0.5:
+	while (time.time() - start_time) < 1:
 		kissa.value = 3.5
 	os.system('clear')
 	print "fpm: %d" % (60/(time.time() - start_time))
