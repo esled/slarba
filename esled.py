@@ -72,7 +72,35 @@ def screen():
 			pass			
 		clk = flag.value
 	print "ERROR"
+
+
+
+#def screen():
+#	clk = 0
+#	while child_flag.value == 1:
+#		os.system('clear')
+#		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
+#		print "RTC aika: %s" % RTC_Data.value
+#		print "CAN tila: %s" % CAN_Data.value
+#		print "I2C tila: %d" % I2C_Data.value
+#		print " "
+#		print "Dallas 1-wire anturit:"
+#		print "Temp sensor 1. s/n 28-00000696b200"
+#		print u"Arvo : {0:0.1f}\u00b0C\n".format(D1W_1.value)
+#		print " "
+#		print "DHT anturi 1"
+#		print u'Temp={0:0.1f}\u00b0C\nHumidity={1:0.1f}%\n'.format(DHT_1_T.value, DHT_1_H.value)
+#
+#		print "SHT Anturi"
+#		print u'Temp: {0:0.1f}\u00b0C'.format(SHT21_T.value)
+#		print "Hum : {0:0.1f}%".format(SHT21_H.value)
+#		while flag.value == clk:
+#			pass			
+#		clk = flag.value
+#	print "ERROR"
 	
+
+
 def gps():
 	clk = 0
 	while child_flag.value:
@@ -85,7 +113,7 @@ def gps():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def rtc():
 	clk = 0
@@ -94,7 +122,7 @@ def rtc():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def can():
 	clk = 0
@@ -103,7 +131,7 @@ def can():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def i2c():
 	clk = 0
@@ -112,7 +140,7 @@ def i2c():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def display():
 	clk = 0
@@ -121,7 +149,7 @@ def display():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def anturit():
 	clk = 0
@@ -137,7 +165,7 @@ def anturit():
 		while flag.value == clk:
 			pass
 		clk = flag.value
-		print "hop"
+		#print "hop"
 		
 def DHT():
 	clk = 0
@@ -156,7 +184,7 @@ def DHT():
 		while flag.value == clk:
 			pass
 		clk = flag.value		
-		print "hop"
+		#print "hop"
 		
 while 1:	
 	children = []
@@ -176,7 +204,7 @@ while 1:
 		print "fpm: %d" % (60/(time.time() - start_time))
 		#print "\n\n\n"
 		start_time = time.time()
-		while (time.time() - start_time) < 0.01:
+		while (time.time() - start_time) < 0.1:
 			pass
 		if flag.value == 0:
 			flag.value = 1
