@@ -15,7 +15,7 @@ class Example(AVC):
 	# main window
 	window = gtk.Window()
 	window.set_title('Sporon Spermometer')
-	window.resize(500,500)
+	window.resize(600,500)
 	window.connect('destroy',gtk.main_quit)	
 
 	# horizontal layout for widgets inside main window
@@ -29,7 +29,7 @@ class Example(AVC):
 	label.set_markup('<b>%d</b>')
 	hbox.add(label)
 	 
-	label2 = gtk.Label(gtk.Adjustment(0,0,500,1,5,0))
+	label2 = gtk.Label(gtk.Adjustment(0,50,150,1,5,0))
 	label2.set_angle(45)
 	label2.set_name('testi')
 	label2.set_markup(str(kissa))
