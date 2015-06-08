@@ -30,7 +30,7 @@
 
 
 import gtk				# gimp tool kit bindings
-import gtk.label.glade			# glade bindings
+import gtk.glade			# glade bindings
 
 from avc import *			# AVC
 
