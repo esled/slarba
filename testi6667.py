@@ -11,6 +11,7 @@ class Example(AVC):
    def __init__(self):
 
 	## create GUI
+
 	kissa = 200
 	# main window
 	window = gtk.Window()
