@@ -31,7 +31,7 @@ class Example(AVC):
 	label.set_markup('<b>%d</b>')
 	hbox.add(label)
 	 
-	label2 = gtk.Label(gtk.Adjustment(0,0,500,1,5,0)
+	label2 = gtk.Label(gtk.Adjustment(0,0,500,1,5,0))
 	label2.set_angle(45)
 	label2.set_name('testi')
 	label2.set_markup(str(kissa))
