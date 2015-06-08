@@ -28,7 +28,7 @@ class Example(AVC):
 	label.set_markup('<b>%d</b>')
 	hbox.add(label)
 	 
-	label2 = gtk.Label(gtk.Adjustment(0,100,100,1,5,0))
+	label2 = gtk.Label(100,100)
 	label2.set_name('testi')
 	label2.set_markup(str(kissa))
 	hbox.add(label2)
