@@ -29,8 +29,8 @@ class Example(AVC):
 	hbox.add(label)
 	 
 	label2 = gtk.Label()
-	label2.set_name(str(kissa))
-	label2.set_markup('<b>%d</b>')
+	label2.set_name('testi')
+	label2.set_markup(str(kissa))
 	hbox.add(label2)
 
 	# spin button
