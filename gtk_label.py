@@ -30,7 +30,7 @@
 
 
 import gtk				# gimp tool kit bindings
-import gtk.glade			# glade bindings
+import gtk_label.glade			# glade bindings
 
 from avc import *			# AVC
 
@@ -45,7 +45,7 @@ class Example(AVC):
   def __init__(self):
 
     # create GUI
-    self.glade = gtk.glade.XML(GLADE_XML)
+    self.glade = gtk_label.glade.XML(GLADE_XML)
 
     # autoconnect GUI signal handlers
     self.glade.signal_autoconnect(self)
