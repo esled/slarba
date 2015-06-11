@@ -22,24 +22,23 @@ class Example(AVC):
 	# horizontal layout for widgets inside main window
 	hbox = gtk.HBox()
 	window.add(hbox)
-	
+	col1 = gtk.VBox()
+	col2 = gtk.VBox()
+	hbox.add(col1)
+	hbox.add(col2)
 
 	# label replicating the spin button value with formatting string
 	label = gtk.Label()
-	label.set_name('spin_value__label')
-	label.set_markup('<b>%d</b>')
-	hbox.add(label)
+	label.set_name('testi2')
+	label.set_markup('Yksi lammas\nKaksi lammasta\nKolme lammasta\n<span size="40000"><b>KISSA</b></span>\n<i>VAARILLA ON SAARI SE OMA SAARI ON!</i>')
+	col2.add(label)
 	 
-	label2 = gtk.Label(gtk.Adjustment(0,50,150,1,5,0))
-	label2.set_angle(190)
+	label2 = gtk.Label()
+	#label2.set_angle(190)
 	label2.set_name('testi')
-	label2.set_markup(str(kissa))
-	hbox.add(label2)
+	label2.set_markup('Tieto1:\nTieto2:\nTieto2:\nTieto4:\nTieto5:')
+	col1.add(label2)
 
-	# spin button
-	spinbutton = gtk.SpinButton(gtk.Adjustment(0,0,100,1,5,0))
-	spinbutton.set_name('spin_value__spinbutton')
-	hbox.add(spinbutton)
 
 	# show all widgets
 	window.show_all()
