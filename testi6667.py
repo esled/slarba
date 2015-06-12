@@ -16,7 +16,7 @@ class Example(AVC):
 	# main window
 	window = gtk.Window()
 	window.set_title('Sporon Spermometer')
-	window.resize(600,500)
+	window.resize(600,550)
 	window.connect('destroy',gtk.main_quit)	
 
 	# horizontal layout for widgets inside main window
@@ -31,7 +31,7 @@ class Example(AVC):
 	# label replicating the spin button value with formatting string
 	label = gtk.Label()
 	label.set_name('testi2')
-	label.set_markup('<span size="40000"><b>Kellonaika</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="20000"><b>KISSA3</b></span>')
+	label.set_markup('<span size="40000"><b>Kellonaika</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="30000"><b>KISSA3</b></span>')
 	col2.add(label)
 	 
 	label2 = gtk.Label()
