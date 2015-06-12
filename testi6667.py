@@ -31,13 +31,13 @@ class Example(AVC):
 	# label replicating the spin button value with formatting string
 	label = gtk.Label()
 	label.set_name('testi2')
-	label.set_markup('<span size="20000"><b>Kellonaika</b></span>\n<span size="20000"><b>Koordit</b></span>\n<span size="20000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="20000"><b>KISSA</b></span></i>\n<span size="20000"><b>KISSA3</b></span>')
+	label.set_markup('<span size="40000"><b>Kellonaika</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="20000"><b>KISSA3</b></span>')
 	col2.add(label)
 	 
 	label2 = gtk.Label()
 	#label2.set_angle(190)
 	label2.set_name('testi')
-	label2.set_markup('<span size="20000">Kello:</span>\n<span size="20000">GPS:</span>\n<span size="20000">CAN:</span>\n<span size="20000">I2C:</span>\n<span size="20000">TEMP:</span>\n<span size="20000">HUM:</span>')
+	label2.set_markup('<span size="40000">Kello:</span>\n<span size="40000">GPS:</span>\n<span size="40000">CAN:</span>\n<span size="40000">I2C:</span>\n<span size="40000">TEMP:</span>\n<span size="40000">HUM:</span>')
 	col1.add(label2)
 
 
