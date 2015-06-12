@@ -26,17 +26,18 @@ class Example(AVC):
 	col2 = gtk.VBox()
 	hbox.add(col1)
 	hbox.add(col2)
+	
 
 	# label replicating the spin button value with formatting string
 	label = gtk.Label()
 	label.set_name('testi2')
-	label.set_markup('Yksi lammas\nKaksi lammasta\nKolme lammasta\n<span size="40000"><b>KISSA</b></span>\n<i>VAARILLA ON SAARI SE OMA SAARI ON!</i>')
+	label.set_markup('<span size="40000"><b>Kellonaika</b>\n<span size="40000"><b>Koordit</b>n<span size="40000"><b>CANintila </b>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></i>\n<span size="40000"><b>KISSA3</b>')
 	col2.add(label)
 	 
 	label2 = gtk.Label()
 	#label2.set_angle(190)
 	label2.set_name('testi')
-	label2.set_markup('Tieto1:\nTieto2:\nTieto2:\nTieto4:\nTieto5:')
+	label2.set_markup('<span size="30000">Kello:\n<span size="30000">GPS:\n<span size="30000">CAN:\n<span size="30000">I2C:\n<span size="40000">TEMP:\n<span size="40000">HUM:')
 	col1.add(label2)
 
 
