@@ -73,9 +73,6 @@ class Example(AVC):
 	window.show_all()
 
 
-	# the variable holding the spin button value
-	self.spin_value = 0
-
  #### MAIN
 
 def ProcessSelectFunction(process):
@@ -171,6 +168,8 @@ def rtc():
 		RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
 		while flag.value == clk:
 			pass
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
+		label.set_markup(teksti)
 		clk = flag.value
 		#print "hop"
 		
