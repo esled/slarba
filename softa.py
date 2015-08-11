@@ -169,7 +169,7 @@ def rtc():
 		while flag.value == clk:
 			pass
 		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
-		label.set_markup(teksti)
+		example.label.set_markup(teksti)
 		clk = flag.value
 		#print "hop"
 		
