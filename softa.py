@@ -96,9 +96,19 @@ def ProcessSelectFunction(process):
 def screen():
 	example = Example()				 # instantiate the application
 	example.avc_init()				  # connect widgets with variables
+	
+	
+#	g_timeout_add(1000, (GSourceFunc) timer_event, (gpointer) Example);  //Register the timer and set time in mS. The timer_event() function is called repeatedly until it returns FALSE. 
+#	gtk_widget_show_all(Example);
+#	timer_event(Example);				//Call the timer function now if you don't want to wait for the first time period triggered call 
+
+
+	
+	
 	gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
+		gtk_main_iteration();
 		os.system('clear')
 		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
 		print "RTC aika: %s" % RTC_Data.value
