@@ -62,7 +62,7 @@ class Example(AVC):
 	# label replicating the spin button value with formatting string
 	self.label = gtk.Label()
 	self.label.set_name('testi2')
-	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
+	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>Accelerometer x,y,z</b></span>' % RTC_Data.value
 	self.label.set_markup(teksti)
 	col2.add(self.label)
 	 
@@ -78,7 +78,7 @@ class Example(AVC):
    def loop(self):
 	#gtk.main()
 	while 1:
-		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>%f</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value,SHT21_H.value, SHT21_T.value, D1W_1.value, Axelerometer_x.value)
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>%.4f, %.4f, %.4f</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value,SHT21_H.value, SHT21_T.value, D1W_1.value, Axelerometer_x.value, Axelerometer_y.value, Axelerometer_z.value)
 		self.label.set_markup(teksti)
 		gtk.main_iteration()
 	
@@ -200,12 +200,12 @@ def i2c():
 	while child_flag.value:
 		I2C_Data.value = 0
 		while flag.value == clk:
-			koordinaatit = adxl345.ADXL345().getAxes()
-			Axelerometer_x.value = koordinaatit["x"]
-			Axelerometer_y.value = koordinaatit["y"]
-			Axelerometer_z.value = koordinaatit["z"]
 			pass
 		clk = flag.value
+		koordinaatit = adxl345.ADXL345().getAxes()
+		Axelerometer_x.value = koordinaatit["x"]
+		Axelerometer_y.value = koordinaatit["y"]
+		Axelerometer_z.value = koordinaatit["z"]
 		#print "hop"
 		
 def display():
