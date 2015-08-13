@@ -1,5 +1,6 @@
 import os, time, sys, sht21#, Adafruit_DHT
 import gtk						# gimp tool kit bindings
+import adxl345
 from multiprocessing import Value, Array
 from subprocess import call
 from avc import *				   # AVC
@@ -15,6 +16,9 @@ NUM_PROCESSES = 7 #JOS DHT22 -> 8
 Longitude = Value('d',0.0)
 Latitude = Value('d',0.0)
 
+Axelerometer_x = Value('d',0.0)
+Axelerometer_y = Value('d',0.0)
+Axelerometer_z = Value('d',0.0)
 
 RTC_Data = Array('c',"kissa                          ")
 I2C_Data = Value('d',1.0)
@@ -74,7 +78,7 @@ class Example(AVC):
    def loop(self):
 	#gtk.main()
 	while 1:
-		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value,SHT21_H.value, SHT21_T.value, D1W_1.value)
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>%f</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value,SHT21_H.value, SHT21_T.value, D1W_1.value, Axelerometer_x.value)
 		self.label.set_markup(teksti)
 		gtk.main_iteration()
 	
@@ -196,6 +200,10 @@ def i2c():
 	while child_flag.value:
 		I2C_Data.value = 0
 		while flag.value == clk:
+			koordinaatit = adxl345.ADXL345().getAxes()
+			Axelerometer_x.value = koordinaatit("x")
+			Axelerometer_y.value = koordinaatit("y")
+			Axelerometer_z.value = koordinaatit("z")
 			pass
 		clk = flag.value
 		#print "hop"
