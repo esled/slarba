@@ -56,11 +56,11 @@ class Example(AVC):
 	
 
 	# label replicating the spin button value with formatting string
-	label = gtk.Label()
-	label.set_name('testi2')
+	self.label = gtk.Label()
+	self.label.set_name('testi2')
 	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
-	label.set_markup(teksti)
-	col2.add(label)
+	self.label.set_markup(teksti)
+	col2.add(self.label)
 	 
 	label2 = gtk.Label()
 	#label2.set_angle(190)
@@ -75,7 +75,7 @@ class Example(AVC):
 	#gtk.main()
 	while 1:
 		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koddordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
-		label.set_markup(teksti)
+		self.label.set_markup(teksti)
 		gtk.main()
 	
  #### MAIN
