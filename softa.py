@@ -97,7 +97,7 @@ def screen():
 	example = Example()				 # instantiate the application
 	example.avc_init()				  # connect widgets with variables
 	
-	#gtk.main()						# run GTK event loop until quit
+	gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
 		gtk.main_iteration()
