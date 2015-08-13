@@ -65,7 +65,7 @@ class Example(AVC):
 	label2 = gtk.Label()
 	#label2.set_angle(190)
 	label2.set_name('testi')
-	label2.set_markup('<span size="40000">Kello:</span>\n<span size="40000">GPS:</span>\n<span size="40000">CAN:</span>\n<span size="40000">I2C:</span>\n<span size="40000">TEMP:</span>\n<span size="40000">HUM:</span>')
+	label2.set_markup('<span size="40000">Kello:</span>\n<span size="40000">GPS:</span>\n<span size="40000">SHT21_H:</span>\n<span size="40000">SHT21_T:</span>\n<span size="40000">TEMP:</span>\n<span size="40000">HUM:</span>')
 	col1.add(label2)
 
 
@@ -74,7 +74,7 @@ class Example(AVC):
    def loop(self):
 	#gtk.main()
 	while 1:
-		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>%f</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value, D1W_1.value)
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value, D1W_1.value,SHT21_T,value,SHT21_H.value)
 		self.label.set_markup(teksti)
 		gtk.main_iteration()
 	
