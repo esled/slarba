@@ -201,9 +201,9 @@ def i2c():
 		I2C_Data.value = 0
 		while flag.value == clk:
 			koordinaatit = adxl345.ADXL345().getAxes()
-			Axelerometer_x.value = koordinaatit("x")
-			Axelerometer_y.value = koordinaatit("y")
-			Axelerometer_z.value = koordinaatit("z")
+			Axelerometer_x.value = koordinaatit["x"]
+			Axelerometer_y.value = koordinaatit["y"]
+			Axelerometer_z.value = koordinaatit["z"]
 			pass
 		clk = flag.value
 		#print "hop"
