@@ -100,7 +100,7 @@ def screen():
 	#gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
-		gtk_main_iteration();
+		gtk.main_iteration()
 		os.system('clear')
 		print "GPS data :\nLongitude= {0:0.5f}\nLatitude = {1:0.5f}\n".format(Longitude.value, Latitude.value) #GPS_Data.value
 		print "RTC aika: %s" % RTC_Data.value
