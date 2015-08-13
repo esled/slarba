@@ -97,15 +97,7 @@ def screen():
 	example = Example()				 # instantiate the application
 	example.avc_init()				  # connect widgets with variables
 	
-	
-#	g_timeout_add(1000, (GSourceFunc) timer_event, (gpointer) Example);  //Register the timer and set time in mS. The timer_event() function is called repeatedly until it returns FALSE. 
-#	gtk_widget_show_all(Example);
-#	timer_event(Example);				//Call the timer function now if you don't want to wait for the first time period triggered call 
-
-
-	
-	
-	gtk.main()						# run GTK event loop until quit
+	#gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
 		gtk_main_iteration();
@@ -179,7 +171,7 @@ def rtc():
 		while flag.value == clk:
 			pass
 		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
-		example.label.set_markup(teksti)
+		Example.label.set_markup(teksti)
 		clk = flag.value
 		#print "hop"
 		
@@ -230,7 +222,7 @@ def DHT():
 	clk = 0
 	while child_flag.value:
 	#	if DHT_1_W.value > 4:
-	#		DHT_1_W.value = 0
+	#		DaHT_1_W.value = 0
 	#		humidity, temperature = Adafruit_DHT.read(Adafruit_DHT.DHT22, "17")
 	#		if humidity is not None and temperature is not None:
 	#			DHT_1_T.value = temperature
@@ -263,7 +255,7 @@ while 1:
 		print "fpm: %d" % (60/(time.time() - start_time))
 		#print "\n\n\n"
 		start_time = time.time()
-		while (time.time() - start_time) < 0.1:
+		while (time.time() - start_time) < 1:
 			pass
 		if flag.value == 0:
 			flag.value = 1
