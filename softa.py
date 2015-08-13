@@ -58,7 +58,7 @@ class Example(AVC):
 	# label replicating the spin button value with formatting string
 	label = gtk.Label()
 	label.set_name('testi2')
-	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
+	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % liststore[0][0]
 	label.set_markup(teksti)
 	col2.add(label)
 	 
@@ -74,9 +74,6 @@ class Example(AVC):
    
 
  #### MAIN
-   while 1:
-	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
-	label.set_markup(teksti)
  
 def ProcessSelectFunction(process):
 	if process == 0:
@@ -175,6 +172,7 @@ def rtc():
 			pass
 		#teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
 		#Example.label.set_markup(teksti)
+		gtk.liststore[0][0] = RTC_Data.value
 		clk = flag.value
 		#print "hop"
 		
