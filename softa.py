@@ -71,7 +71,7 @@ class Example(AVC):
 
 	# show all widgets
 	window.show_all()
-   def main(self):
+   def loop(self):
 	#gtk.main()
 	while 1:
 		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koddordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
@@ -101,7 +101,7 @@ def ProcessSelectFunction(process):
 def screen():
 	example = Example()				 # instantiate the application
 	example.avc_init()				  # connect widgets with variables
-	Example.main()
+	Example.loop(Example)
 	#gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
