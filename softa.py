@@ -71,8 +71,12 @@ class Example(AVC):
 
 	# show all widgets
 	window.show_all()
-   
-
+   def main(self):
+	#gtk.main()
+	while 1:
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
+		label.set_markup(teksti)
+	
  #### MAIN
  
 def ProcessSelectFunction(process):
@@ -97,7 +101,7 @@ def screen():
 	example = Example()				 # instantiate the application
 	example.avc_init()				  # connect widgets with variables
 	
-	gtk.main()						# run GTK event loop until quit
+	#gtk.main()						# run GTK event loop until quit
 	clk = 0
 	while child_flag.value == 1:
 		gtk.main_iteration()
@@ -165,7 +169,7 @@ def gps():
 		#print "hop"
 		
 def rtc():
-	time.sleep(1)
+	#time.sleep(1)
 	clk = 0
 	while child_flag.value:
 		RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
@@ -173,7 +177,7 @@ def rtc():
 			pass
 		#teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
 		#Example.label.set_markup(teksti)
-		gtk.Label.set_text(example.label,RTC_Data.value)
+		#gtk.Label.set_text(example.label,RTC_Data.value)
 		clk = flag.value
 		#print "hop"
 		
