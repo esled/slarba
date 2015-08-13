@@ -76,6 +76,7 @@ class Example(AVC):
 	while 1:
 		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
 		label.set_markup(teksti)
+		gtk.main_iteration()
 	
  #### MAIN
  
