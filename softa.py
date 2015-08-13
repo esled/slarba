@@ -165,6 +165,7 @@ def gps():
 		#print "hop"
 		
 def rtc():
+	time.sleep(1)
 	clk = 0
 	while child_flag.value:
 		RTC_Data.value = time.strftime("%d %b %Y %H:%M:%S")
