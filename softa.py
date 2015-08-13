@@ -62,14 +62,14 @@ class Example(AVC):
 	# label replicating the spin button value with formatting string
 	self.label = gtk.Label()
 	self.label.set_name('testi2')
-	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>Accelerometer x,y,z</b></span>' % RTC_Data.value
+	teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b></b></span>' % RTC_Data.value
 	self.label.set_markup(teksti)
 	col2.add(self.label)
 	 
 	label2 = gtk.Label()
 	#label2.set_angle(190)
 	label2.set_name('testi')
-	label2.set_markup('<span size="40000">Kello:</span>\n<span size="40000">GPS:</span>\n<span size="40000">SHT21_H:</span>\n<span size="40000">SHT21_T:</span>\n<span size="40000">TEMP:</span>\n<span size="40000">Accelerometer x,y,z:</span>')
+	label2.set_markup('<span size="40000">Kello:</span>\n<span size="40000">GPS:</span>\n<span size="40000">SHT21_H:</span>\n<span size="40000">SHT21_T:</span>\n<span size="40000">TEMP:</span>\n<span size="20000">Accelerometer x,y,z</span>')
 	col1.add(label2)
 
 
