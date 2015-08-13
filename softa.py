@@ -172,7 +172,7 @@ def rtc():
 			pass
 		#teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>Koordit</b></span>\n<span size="40000"><b>CANintila</b></span>\n<span size="40000"><b>KISSA</b></span>\n<i><span size="40000"><b>KISSA</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % RTC_Data.value
 		#Example.label.set_markup(teksti)
-		gtk.liststore[0][0] = RTC_Data.value
+		gtk.Label.set_text(label,RTC_Data.value)
 		clk = flag.value
 		#print "hop"
 		
