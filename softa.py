@@ -74,7 +74,7 @@ class Example(AVC):
    def loop(self):
 	#gtk.main()
 	while 1:
-		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value, D1W_1.value, SHT21_T.value, SHT21_H.value)
+		teksti = '<span size="40000"><b>%s</b></span>\n<span size="40000"><b>%f, %f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<span size="40000"><b>%.2f</b></span>\n<i><span size="40000"><b>%.2f</b></span></i>\n<span size="40000"><b>KISSA3</b></span>' % (RTC_Data.value, Longitude.value, Latitude.value,SHT21_H.value, SHT21_T.value, D1W_1.value)
 		self.label.set_markup(teksti)
 		gtk.main_iteration()
 	
